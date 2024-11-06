@@ -1,3 +1,3 @@
-print ("Hola Mundo")
+print("Hola Mundo")
 a = 5
-print (a)
+print(a)

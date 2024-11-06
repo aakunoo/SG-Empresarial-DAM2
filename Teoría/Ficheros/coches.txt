@@ -1,0 +1,3 @@
+Mercedes 360,45000
+BMW 540,85000
+Renault Megane,25000
