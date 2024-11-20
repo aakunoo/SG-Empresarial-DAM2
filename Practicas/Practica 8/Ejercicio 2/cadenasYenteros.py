@@ -3,7 +3,6 @@
 numeroHijos = input("Introduce el número de hijos: ")
 agnoNacimiento = input("Introduce el año de nacimiento: ")
 
-
 convertirHijos = input("\n¿Quieres convertir el número de hijos de cadena a entero? (si/no): ").lower().strip()
 
 if convertirHijos == "si":
@@ -11,9 +10,6 @@ if convertirHijos == "si":
     print("\nSe ha convertido el número de hijos a entero.")
 elif convertirHijos == "no":
     print("\nNo se ha convertido el número de hijos a entero.")
-else:
-    print("\nRespuesta no válida.")
-    exit(1)
 
 convertirAgno = input("\n¿Quieres convertir el año de nacimiento de cadena a entero? (si/no): ").lower().strip()
 
@@ -23,9 +19,6 @@ if convertirAgno == "si":
 
 elif convertirAgno == "no":
     print("\nNo se ha convertido el año de nacimiento a entero.")
-else:
-    print("\nRespuesta no válida.")
-    exit(2)
 
 match convertirHijos, convertirAgno:
     case("no", "no"):
@@ -45,4 +38,6 @@ match convertirHijos, convertirAgno:
         print(f"El resultado de la multiplicación entre {numeroHijos} por {agnoNacimiento} es = " + str((numeroHijos * agnoNacimiento)))
 
     case _:
-        raise ValueError("Respuesta no válida.")
+        print("\nNo se ha podido continuar...")
+
+print("Fin del programa.")
