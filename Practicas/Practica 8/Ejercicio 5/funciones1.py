@@ -54,12 +54,11 @@ repetir("repito", entero=6)
 
 def funcion(func1, func2):
     func1()
-    func2()
+    print(func2())
 
 asignaturas = {"Acceso a Datos": 5, "Programación": 6, "Sistemas": 8, "Interfaces": 3}
-funcion(lambda: mayor(23, 15), lambda: print(peque(**asignaturas)))
+funcion(mayor(14, 23), print(peque(**asignaturas)))
 
-# El uso de lambda es para poder pasar funciones como argumentos.
 
 help(mayor)
 help(area)
