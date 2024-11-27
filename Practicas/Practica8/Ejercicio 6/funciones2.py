@@ -1,3 +1,5 @@
+''' By Jerónimo Vicente '''
+
 def calcula_area(figura):
     def calcular(base, altura):
         if figura == "triangulo":
