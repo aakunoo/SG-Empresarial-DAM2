@@ -32,11 +32,11 @@ class Vehiculo:
 
     @classmethod
     def gasto(cls):
-        print(f"El gasto acumulado en vehículos es: {cls.total}")
+        pass#print(f"El gasto acumulado en vehículos es: {cls.total}")
 
     @staticmethod
     def informar():
-        print("La clase ‘vehiculo’ sirve para crear todo tipo de vehículos")
+        pass#print("La clase ‘vehiculo’ sirve para crear todo tipo de vehículos")
 
     def __gt__(self, vehiculo2):
         return self.longitud > vehiculo2.longitud
@@ -71,16 +71,16 @@ aereo1 = vAereo("Boing 747", True, "parado", 65.70, 100000000, 0)
 
 acuatico1 = vAcuatico("barca", False, "parado", 3.90, 400)
 
-print("\n------------------------------------------------------------")
+#print("\n------------------------------------------------------------")
 aereo1.mover()
-print(f"\nEl estado de 'aereo1' es: {aereo1.estado} y su altura es: {aereo1.altura} m")
+#print(f"\nEl estado de 'aereo1' es: {aereo1.estado} y su altura es: {aereo1.altura} m")
 
 acuatico1.mover()
-print(f"El estado de 'acuatico1' es: {acuatico1.estado}")
+#print(f"El estado de 'acuatico1' es: {acuatico1.estado}")
 
 terrestre1.enganchar(9.15)
-print(f"La longitud de 'terrestre1' es: {terrestre1.longitud} m")
-print("\n------------------------------------------------------------")
+#print(f"La longitud de 'terrestre1' es: {terrestre1.longitud} m")
+#print("\n------------------------------------------------------------")
 
 
 class vHibrido1(vTerrestre, vAcuatico):
@@ -99,15 +99,15 @@ hibrido2 = vHibrido2("hidroavion", True, "parado", 15.60, 500000, 0)
 hibrido1.mover()
 hibrido2.mover()
 
-print(f"\nEl estado de 'hibrido1' es: {hibrido1.estado}")
-print(f"El estado de 'hibrido2' es: {hibrido2.estado} y su altura es: {hibrido2.altura} m")
+#print(f"\nEl estado de 'hibrido1' es: {hibrido1.estado}")
+#print(f"El estado de 'hibrido2' es: {hibrido2.estado} y su altura es: {hibrido2.altura} m")
 
 class Reproductor:
     def __init__(self, nombre):
         self.nombre = nombre
 
     def cantar(self):
-        print("Mi carro, me lo robaron…")
+        pass        #print("Mi carro, me lo robaron…")
 
 
 class Turismo(vTerrestre):
@@ -120,6 +120,6 @@ reproduce = Reproductor("MxOnda")
 
 turismo1 = Turismo("Seat Ateca", True, "parado", 4.40, 23000, reproduce)
 
-print("\n------------------------------------------------------------")
+#print("\n------------------------------------------------------------")
 turismo1.radio.cantar()
-print("------------------------------------------------------------")
+#print("------------------------------------------------------------")

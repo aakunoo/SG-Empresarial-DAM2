@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb6b573c-1eda-49ad-88a1-9f3d53a334d3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Ejercicio 8/objetosYclases2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ejer_Python/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/SG-Empresarial-DAM2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/SG-Empresarial-DAM2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 8/Ejercicio 1/bisiesto.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ejercicio 1/bisiesto.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 8/Ejercicio 2/cadenasYenteros.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ejercicio 2/cadenasYenteros.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 8/Ejercicio 3/buscaEntero.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ejercicio 3/buscaEntero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 8/Ejercicio 4/tablaImpar.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ejercicio 4/tablaImpar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 8/Ejercicio 5/funciones1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ejercicio 5/funciones1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 8/Ejercicio 6/funciones2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ejercicio 6/funciones2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Practica 8/Ejercicio 7/objetosYclases1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Ejercicio 7/objetosYclases1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejer_Python/funciones1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejer_Python/funciones1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejer_Python/funciones2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejer_Python/funciones2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejer_Python/objetosYclases2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ejer_Python/objetosYclases2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +26,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2pQUIiwZero3szwtgQ7QY4ME04X" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -51,11 +44,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Manana.DESKTOP-0QML5MI/Desktop/SGE-DAM2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -76,6 +71,9 @@
       <option name="presentableId" value="Default" />
       <updated>1732697714963</updated>
       <workItem from="1732697716077" duration="1332000" />
+      <workItem from="1732872069630" duration="444000" />
+      <workItem from="1732876799744" duration="359000" />
+      <workItem from="1732877176128" duration="4757000" />
     </task>
     <servers />
   </component>
@@ -86,15 +84,20 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>4</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/Ejer_Python/funciones1.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Ejer_Python/objetosYclases2.py</url>
+          <line>101</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ModulosYPaquetes$main.coverage" NAME="main Coverage Results" MODIFIED="1732699009878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ModulosYPaquetes$funciones1.coverage" NAME="funciones1 Coverage Results" MODIFIED="1732698396140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejer_Python" />
+    <SUITE FILE_PATH="coverage/ModulosYPaquetes$main.coverage" NAME="main Coverage Results" MODIFIED="1732882912021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ModulosYPaquetes$funciones1.coverage" NAME="funciones1 Coverage Results" MODIFIED="1732882163958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ejer_Python" />
   </component>
 </project>
