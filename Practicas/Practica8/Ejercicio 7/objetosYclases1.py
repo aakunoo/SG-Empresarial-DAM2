@@ -45,8 +45,9 @@ v1 = Vehiculo("coche", True, "parado", 3.79, 19000)
 v2 = Vehiculo("bicicleta", False, "parado", 1.40, 120)
 v3 = Vehiculo("barco", True, "parado", 8.55, 67800)
 
+#,v1.precio no deja porque precio es privado.")
 print("\n------------------------------------------------------------")
-print(f"\nNombre del vehiculo 1: {v1.nombre} \nLongitud del vehiculo 2: {v2.longitud} \nPeso del vehiculo 3: {v3.peso}") #,v1.precio no deja porque precio es privado.")
+print(f"\nNombre del vehiculo 1: {v1.nombre} \nLongitud del vehiculo 2: {v2.longitud} \nPeso del vehiculo 3: {v3.peso}")
 
 print("\n------------------------------------------------------------")
 v1.mover()
