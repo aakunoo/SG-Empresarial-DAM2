@@ -1,0 +1,1 @@
+from . import javv_inmuebles

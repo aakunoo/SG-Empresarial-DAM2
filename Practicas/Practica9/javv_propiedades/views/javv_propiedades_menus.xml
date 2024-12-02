@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="javv_propiedades_menu_root" name="Propiedades Inmobiliarias">
+        <menuitem id="javv_propiedades_first_level_menu1" name="Anuncios">
+            <menuitem id="javv_propiedades_submenu" name="Propiedades" action="javv_propiedades_inmuebles_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>
