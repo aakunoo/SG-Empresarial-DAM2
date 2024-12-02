@@ -7,7 +7,6 @@ while numero < len(texto):
     if texto[numero].isdigit():
         print("Se ha encontrado un número en el texto.")
         break
-
     else:
         numero += 1
 

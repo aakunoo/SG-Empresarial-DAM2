@@ -42,7 +42,8 @@ print(suma(valores))
 def peque(**diccionario):
     return min(diccionario, key=diccionario.get)
 
-habitaciones = {"salón": 20, "terraza": 10, "lavadero": 5, "despacho": 7, "cuarto": 15}
+# Lo hago con otros valores por falta del caracter nn por el teclado que tengo.
+habitaciones = {"salón": 20, "terraza": 10, "lavadero": 5, "despacho": 7, "cuarto": 15} #
 
 print(peque(**habitaciones))
 
