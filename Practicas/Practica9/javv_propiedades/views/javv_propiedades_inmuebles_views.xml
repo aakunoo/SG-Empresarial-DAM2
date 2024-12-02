@@ -5,4 +5,75 @@
         <field name="res_model">javv.propiedades_inmuebles</field>
         <field name="view_mode">tree,form</field>
     </record>
+        <record id="javv_propiedades_inmuebles_view_tree" model="ir.ui.view">
+        <field name="name">Lista de Propiedades</field>
+        <field name="model">javv.propiedades_inmuebles</field>
+        <field name="arch" type="xml">
+            <tree string ="Listado">
+                <field name="name"/>
+                <field name="codigo_postal"/>
+                <field name="dormitorios"/>
+                <field name="salon" string = "Salón (m²)"/>
+                <field name="precio_esperado"/>
+                <field name="precio_venta"/>
+                <field name="fecha_disponibilidad"/>
+            </tree>
+        </field>
+    </record>
+     <record id="javv_propiedades_inmuebles_view_form" model="ir.ui.view">
+        <field name="name">propiedades.inmuebles.form</field>
+        <field name="model">javv.propiedades_inmuebles</field>
+        <field name="arch" type="xml">
+            <form string="Registro">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="codigo_postal"/>
+                        <field name="fecha_disponibilidad"/>
+                    </group>
+                    <group>
+                        <field name="precio_esperado"/>
+                        <field name="precio_venta"/>
+                    </group>
+                    <notebook>
+                        <page string="Descripción">
+                            <group>
+                                <field name="descripcion"/>
+                                <field name="dormitorios"/>
+                                <field name="salon"/>
+                                <field name="fachadas"/>
+                                <field name="garage"/>
+                                <field name="jardin"/>
+                                <field name="area_jardin"/>
+                                <field name="orientacion_jardin"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+        <record id="javv_propiedades_inmuebles_view_search" model="ir.ui.view">
+        <field name="name">propiedades.inmuebles.search</field>
+        <field name="model">javv.propiedades_inmuebles</field>
+        <field name="arch" type="xml">
+            <search string="Búsqueda">
+                <field name="name"/>
+                <field name="codigo_postal"/>
+                <field name="precio_esperado"/>
+                <field name="dormitorios"/>
+                <field name="salon" string="(m²) del salón"/>
+                <field name="fachadas"/>
+                <separator/>
+                <filter string="Disponibles" name="disponibles" domain="[('state', '=', 'nuevo'), ('state', '=', 'oferta_recibida')]"/>
+                <group expand="1" string="Agrupar">
+                    <filter string="Código Postal" name="codigo_postal" context="{'group_by':'codigo_postal'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 </odoo>

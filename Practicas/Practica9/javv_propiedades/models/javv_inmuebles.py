@@ -2,12 +2,12 @@ from odoo import fields, models
 from datetime import timedelta
 
 class javv_inmuebles(models.Model):
-    _name = "javv.propiedades_inmuebles"
+    _name = "javv.propiedades_inmuebles"  # Se creará una tabla llamada javv_inmuebles
     _description = "Propiedades Inmuebles"
 
     name = fields.Char(string="Nombre", required=True)
     descripcion = fields.Text(string="Descripción")
-    cogigo_postal = fields.Char(string="Código Postal")
+    codigo_postal = fields.Char(string="Código Postal")
     fecha_disponibilidad = fields.Date(string="Fecha de Disponibilidad",
                                        copy=False, default=lambda self: fields.Date.today() + timedelta(days=90))
     precio_esperado = fields.Float(string="Precio Esperado", required=True)
