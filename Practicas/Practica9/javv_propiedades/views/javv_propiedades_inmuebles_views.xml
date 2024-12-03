@@ -52,6 +52,12 @@
                                 <field name="orientacion_jardin"/>
                             </group>
                         </page>
+                        <page string="Otra Información">
+                        <group>
+                            <field name="agente_id"/>
+                            <field name="cliente_id"/>
+                        </group>
+                    </page>
                     </notebook>
                 </sheet>
             </form>
