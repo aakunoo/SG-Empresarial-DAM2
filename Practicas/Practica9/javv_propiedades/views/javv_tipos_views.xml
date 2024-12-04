@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="javv_tipos_inmuebles_action" model="ir.actions.act_window">
+        <field name="name">Listado de Tipos de Inmuebles</field>
+        <field name="res_model">javv.tipos_inmuebles</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="javv_tipos_inmuebles_view_tree" model="ir.ui.view">
+        <field name="name">javv.tipos_inmuebles.tree</field>
+        <field name="model">javv.tipos_inmuebles</field>
+        <field name="arch" type="xml">
+            <tree string="Listado">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="javv_tipos_inmuebles_view_form" model="ir.ui.view">
+        <field name="name">javv.tipos_inmuebles.form</field>
+        <field name="model">javv.tipos_inmuebles</field>
+        <field name="arch" type="xml">
+            <form string="Registro">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
