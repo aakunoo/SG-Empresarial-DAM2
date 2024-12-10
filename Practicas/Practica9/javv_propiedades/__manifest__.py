@@ -7,6 +7,7 @@
     'data': [
         'views/javv_propiedades_inmuebles_views.xml',
         'views/javv_tipos_views.xml',
+        'views/javv_inmuebles_etiquetas_views.xml',
         'views/javv_propiedades_menus.xml',
         'security/ir.model.access.csv',
 ],

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="javv_etiquetas_inmuebles_action" model="ir.actions.act_window">
+        <field name="name">Listado de Etiquetas para los Inmuebles</field>
+        <field name="res_model">javv.etiquetas_inmuebles</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="javv_etiquetas_inmuebles_view_tree" model="ir.ui.view">
+        <field name="name">javv.etiquetas_inmuebles.tree</field>
+        <field name="model">javv.etiquetas_inmuebles</field>
+        <field name="arch" type="xml">
+            <tree string="Listado">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="javv_etiquetas_inmuebles_view_form" model="ir.ui.view">
+        <field name="name">javv.etiquetas_inmuebles.form</field>
+        <field name="model">javv.etiquetas_inmuebles</field>
+        <field name="arch" type="xml">
+            <form string="Registro">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

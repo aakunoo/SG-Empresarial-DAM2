@@ -6,6 +6,7 @@
         </menuitem>
         <menuitem id="javv_propiedades_first_level_menu2" name="Configuración">
             <menuitem id="javv_tipos_submenu" name="Tipos de inmuebles" action="javv_tipos_inmuebles_action"/>
+            <menuitem id="javv_etiquetas_submenu" name="Etiquetas de inmuebles" action="javv_etiquetas_inmuebles_action"/>
         </menuitem>
     </menuitem>
 </odoo>

@@ -1,0 +1,157 @@
+EJERCICIO 1 
+------------------------------------------------------------------------------------------------
+
+import psycopg2
+
+# Abrir fichero, guardar info en 3 tuplas.
+with open("registros.txt", "r") as fichero:
+    lista = []
+    for registro in fichero:
+        numero, nombre, apellido = registro.strip().split(":")
+        numero = int(numero)
+        lista.append((numero, nombre, apellido))
+
+for numero, nombre, apellido in lista:
+    numero = f"{float(numero):06.2f}" # flotante 6 posiciones totales, relleno ceros, 2 decimales.
+    nombre = f"{(nombre):^10s}" · 10 caracteres y centrado.
+    
+    print (f"Numero: {numero}, Nombre: {nombre}, Apellido: {apellido}")
+    
+conexion = psycopg2.connect(dbname="dvdrental", user="postgres", password="261103")
+
+puntero = conexion.cursor()
+
+for numero, nombre, apellido in lista:
+    query = """
+        INSERT INTO actor (actor_id, first_name, last_name)
+        VALUES (%s, %s, %s)
+    """
+    puntero.execute(query, (numero, nombre, apellido))
+
+conexion.commit()
+print("Registros añadidos correctamente en la tabla 'actor'.")
+
+puntero.close()
+conexion.close()
+print("Conexión con la base de datos cerrada.")
+
+------------------------------------------------------------------------------------------------
+
+Ejercicio2 - COSAS A TENER EN CUENTA.
+------------------------------------------------------------------------------------------------
+
+class animal():
+    num_animal = 0
+    def __init__(self, nombre, orden, continentes, alimentacion):
+        self.nombre = nombre
+        self.orden = orden
+        self.continentes = continentes
+        self.alimentacion = alimentacion
+        animal.num_animal += 1   # ----------------- ESTO. 
+
+MÉTODO MAGICO ---- La dinámica es la misma pero cambiando el método.
+
+    def __add__(self, other):
+        if isinstance(other, galgo):
+            return self.peso + other.peso
+        return NotImplemented
+
+------------------------------------------------------------------------------------------------
+
+Ejercicio 3
+------------------------------------------------------------------------------------------------
+
+FUNCION DECORADOR --------
+
+def ceros(f):
+    def funcionInterna(*args, **kwargs):
+        resultado = f(*args, **kwargs)
+        conteo_ceros = str(resultado).count("0")
+        print(f"Hay un total de {conteo_ceros} '0's")
+        return resultado
+    return funcionInterna
+
+------------------------------------------------------------------------------------------------
+
+Ejercicio 4
+------------------------------------------------------------------------------------------------
+
+CREAR EXCEPCION ---
+
+
+class Mayor(Exception):
+    pass
+
+
+def visualiza(num1 = 10, /, *, num2):
+    try:
+        match num1, num2:
+            case int(), int():
+
+                if num1 > num2:
+                    raise Mayor("El primer número es mayor que el segundo.")
+                if num2 == 0:
+                    raise ZeroDivisionError("No se puede dividir por cero.")
+                resultado = float(num1 / num2)
+                print(f"El resultado de la división es: {resultado:08.3f}")
+
+            case str(), str():
+                cadena = str(num1+num2).upper()
+                print(f"La concatenación de las cadenas es: {cadena:>30}")
+
+            case _:
+                print("Error: Los argumentos deben ser enteros o cadenas.")
+
+    except Mayor as m:
+        print(f"Error: {m}")
+    except ZeroDivisionError as zde:
+        print(f"Error: {zde}")
+    except Exception as e:
+        print(f"Error general: {e}")
+    finally:
+        print("La función acaba aquí.")
+
+
+
+
+------------------------------------------------------------------
+OTRO EJERCICIO BBDD
+------------------------------------------------------------------
+import psycopg2
+
+conexion = psycopg2.connect(dbname="dvdrental", user="postgres", password="261103")
+try:
+    print("Conexion establecida con la BBDD.")
+    cursor = conexion.cursor()
+
+    query = """SELECT film_id, description 
+    FROM film 
+    WHERE title LIKE '%a';"""
+
+    cursor.execute(query)
+    resultados = cursor.fetchmany(4) # Obtener los primeros 4 registros
+
+    dicc = {}
+    for result in resultados:
+        dicc[result[0]] = result[1]  # film_id como clave, description como valor
+
+    lista_tuplas = []
+    for film_id, descripcion in dicc.items():
+        lista_tuplas.append((film_id, descripcion))
+
+    with open("peliculas.txt", "w") as archivo:
+        for film_id, descripcion in lista_tuplas:
+            archivo.write(f"{film_id} >> {descripcion}\n")
+    print("Información guardada en 'peliculas.txt' con éxito.")
+
+except Exception as e:
+    print(f"Error: {e}")
+
+finally:
+    # Cerrar conexión a la base de datos
+    if 'cursor' in locals():
+        cursor.close()
+    if 'conexion' in locals():
+        conexion.close()
+    print("Conexión cerrada.")
+
