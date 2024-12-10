@@ -1,3 +1,4 @@
+
 import psycopg2
 
 # Conexión a la base de datos dvdrental

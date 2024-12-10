@@ -1,4 +1,4 @@
-EJERCICIO 1 
+EJERCICIO 1 - BBDD
 ------------------------------------------------------------------------------------------------
 
 import psycopg2
@@ -37,7 +37,7 @@ print("Conexión con la base de datos cerrada.")
 
 ------------------------------------------------------------------------------------------------
 
-Ejercicio2 - COSAS A TENER EN CUENTA.
+Ejercicio2 - CLASES Y POO
 ------------------------------------------------------------------------------------------------
 
 class animal():
@@ -56,9 +56,24 @@ MÉTODO MAGICO ---- La dinámica es la misma pero cambiando el método.
             return self.peso + other.peso
         return NotImplemented
 
+
+GETTER Y SETTER -------------
+
+ def __init__(self, modelo, anio, color, propietario):
+        self._nombreOculto = modelo ----- SI ESTO ASI:
+
+    @property
+    def modelo(self):
+        return self._nombreOculto
+
+    @modelo.setter
+    def modelo(self, nuevo_modelo):
+        self._nombreOculto = nuevo_modelo
+
+
 ------------------------------------------------------------------------------------------------
 
-Ejercicio 3
+Ejercicio 3 - PAQUETE IMPORTAR
 ------------------------------------------------------------------------------------------------
 
 FUNCION DECORADOR --------
@@ -71,47 +86,74 @@ def ceros(f):
         return resultado
     return funcionInterna
 
+OTRO EJEMPLO FUNCION DECORADOR ------------
+
+def repetido(func):
+    def wrapper(*args, **kwargs):
+        lista = func(*args, **kwargs)
+        for i in range(len(lista)):
+            if lista[i] in lista[i+1:]:
+                return True
+        return False
+    return wrapper
+
+
+LAMBDA ------
+
+invertir_lista = lambda: lista_cadenas[::-1]
+
 ------------------------------------------------------------------------------------------------
 
-Ejercicio 4
+Ejercicio 4 - EXCEPCIONES
 ------------------------------------------------------------------------------------------------
 
 CREAR EXCEPCION ---
 
 
-class Mayor(Exception):
+class LimiteExcedido(Exception):
     pass
 
 
-def visualiza(num1 = 10, /, *, num2):
+def procesar(param1, /, *, param2=5):
     try:
-        match num1, num2:
-            case int(), int():
+        # Verificación del segundo parámetro con un assert
+        assert param2 <= 5, "El segundo parametro debe ser menor o igual que 5"
+        
+        match param1:
+            case (a, b, c, d):
+                resultado = a + b + c + d
+                return resultado
 
-                if num1 > num2:
-                    raise Mayor("El primer número es mayor que el segundo.")
-                if num2 == 0:
-                    raise ZeroDivisionError("No se puede dividir por cero.")
-                resultado = float(num1 / num2)
-                print(f"El resultado de la división es: {resultado:08.3f}")
+            case (a, b, c):
+                if c == 0:
+                    raise ZeroDivisionError("No se puede dividir por 0.")
+                resultado = (a * b) / c
+                return resultado
 
-            case str(), str():
-                cadena = str(num1+num2).upper()
-                print(f"La concatenación de las cadenas es: {cadena:>30}")
+            case (a, b):
+                if b == 0:
+                    raise ZeroDivisionError("No se puede dividir por 0.")
+                if a > 100:
+                    raise LimiteExcedido("Has superado el limite.")
+                resultado = a / b
+                return resultado
 
             case _:
-                print("Error: Los argumentos deben ser enteros o cadenas.")
+                print("Parametros no validos.")
 
-    except Mayor as m:
-        print(f"Error: {m}")
+        
+    except LimiteExcedido as lm:
+        print(f"Error: {lm}")
     except ZeroDivisionError as zde:
         print(f"Error: {zde}")
+    except AssertionError as ae:
+        print(f"Error de aserción: {ae}")
     except Exception as e:
         print(f"Error general: {e}")
+    else:
+        print("Ejecutado sin excepciones")
     finally:
-        print("La función acaba aquí.")
-
-
+        print("Proceso finalizado")
 
 
 ------------------------------------------------------------------
