@@ -11,6 +11,7 @@ class javv_inmuebles(models.Model):
     agente_id = fields.Many2one("res.users", string="Vendedor", default=lambda self: self.env.user)
     tipos_id = fields.Many2one("javv.tipos_inmuebles", string="Tipo")
     etiquetas_ids = fields.Many2many("javv.etiquetas_inmuebles", string="Etiquetas")
+    ofertas_ids = fields.One2many("javv.ofertas_inmuebles", "inmueble_id", string="Ofertas")
     codigo_postal = fields.Char(string="Código Postal")
     fecha_disponibilidad = fields.Date(string="Fecha de Disponibilidad",
                                        copy=False, default=lambda self: fields.Date.today() + timedelta(days=90))
