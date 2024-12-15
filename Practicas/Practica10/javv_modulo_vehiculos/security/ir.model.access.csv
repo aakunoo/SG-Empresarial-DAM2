@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_javv_vehiculos,access_javv_vehiculos,model_javv_vehiculos,base.group_user,1,1,1,1
+access_javv_tipos_vehiculos,access_javv_tipos_vehiculos,model_javv_tipos_vehiculos,base.group_user,1,1,1,1
+access_javv_caracteristicas_vehiculos,access_javv_caracteristicas_vehiculos,model_javv_caracteristicas_vehiculos,base.group_user,1,1,1,1

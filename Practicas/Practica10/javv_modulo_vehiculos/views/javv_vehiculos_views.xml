@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Acción para abrir la vista de Vehículos -->
+    <record id="action_javv_vehiculos" model="ir.actions.act_window">
+        <field name="name">Vehículos</field>
+        <field name="res_model">javv.vehiculos</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista de lista (Tree) de Vehículos -->
+    <record id="view_javv_vehiculos_tree" model="ir.ui.view">
+        <field name="name">javv.vehiculos.tree</field>
+        <field name="model">javv.vehiculos</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="matricula"/>
+                <field name="tipo_vehiculo_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de formulario de Vehículos -->
+    <record id="view_javv_vehiculos_form" model="ir.ui.view">
+        <field name="name">javv.vehiculos.form</field>
+        <field name="model">javv.vehiculos</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="codigo"/>
+                        <field name="matricula"/>
+                        <field name="tipo_vehiculo_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Menú raíz -->
+    <menuitem id="javv_menu_root" name="Alquiler de Vehículos" sequence="10"/>
+
+    <!-- Submenú para Vehículos -->
+    <menuitem id="javv_menu_vehiculos" name="Vehículos"
+              parent="javv_menu_root" sequence="20"
+              action="action_javv_vehiculos"/>
+</odoo>
