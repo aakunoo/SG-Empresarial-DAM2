@@ -7,6 +7,10 @@
             <tree string="Listado">
                 <field name="precio"/>
                 <field name="comprador_id"/>
+                <field name="validez"/>
+                <field name="fecha_tope"/>
+                <button name="action_aceptar_oferta" icon="fa-check" type="object"/>
+                <button name="action_rechazar_oferta" icon="fa-times" type="object"/>
                 <field name="estado"/>
             </tree>
         </field>
@@ -21,6 +25,8 @@
                     <group>
                         <field name="precio"/>
                         <field name="comprador_id"/>
+                        <field name="validez"/>
+                        <field name="fecha_tope"/>
                         <field name="estado"/>
                     </group>
                 </sheet>
