@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Acción para abrir la vista de Características Especiales -->
+    <record id="action_javv_caracteristicas" model="ir.actions.act_window">
+        <field name="name">Características Especiales</field>
+        <field name="res_model">javv.caracteristicas_vehiculos</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista de lista (Tree) de Características Especiales -->
+    <record id="view_javv_caracteristicas_vehiculos_tree" model="ir.ui.view">
+        <field name="name">javv.caracteristicas_vehiculos.tree</field>
+        <field name="model">javv.caracteristicas_vehiculos</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de formulario de Características Especiales -->
+    <record id="view_javv_caracteristicas_vehiculos_form" model="ir.ui.view">
+        <field name="name">javv.caracteristicas_vehiculos.form</field>
+        <field name="model">javv.caracteristicas_vehiculos</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

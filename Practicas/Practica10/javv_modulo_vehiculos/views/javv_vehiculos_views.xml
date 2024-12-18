@@ -5,6 +5,7 @@
         <field name="name">Vehículos</field>
         <field name="res_model">javv.vehiculos</field>
         <field name="view_mode">tree,form</field>
+
     </record>
 
     <!-- Vista de lista (Tree) de Vehículos -->
@@ -17,6 +18,10 @@
                 <field name="codigo"/>
                 <field name="matricula"/>
                 <field name="tipo_vehiculo_id"/>
+                <field name="num_plazas"/>
+                <field name="combustible"/>
+                <field name="precio_diario"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
@@ -33,6 +38,10 @@
                         <field name="codigo"/>
                         <field name="matricula"/>
                         <field name="tipo_vehiculo_id"/>
+                        <field name="num_plazas"/>
+                        <field name="combustible"/>
+                        <field name="precio_diario"/>
+                        <field name="state"/>
                     </group>
                 </sheet>
             </form>

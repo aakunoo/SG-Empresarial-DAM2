@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Acción para abrir la vista de Alquileres de Vehículos -->
+    <record id="action_javv_alquileres" model="ir.actions.act_window">
+        <field name="name">Alquileres de Vehículos</field>
+        <field name="res_model">javv.alquileres_vehiculos</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista de lista (Tree) de Alquileres -->
+    <record id="view_javv_alquileres_vehiculos_tree" model="ir.ui.view">
+        <field name="name">javv.alquileres_vehiculos.tree</field>
+        <field name="model">javv.alquileres_vehiculos</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="vehiculo_id"/>
+                <field name="cliente_id"/>
+                <field name="usuario_id"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+                <field name="duracion"/>
+                <field name="precio_final"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de formulario de Alquileres -->
+    <record id="view_javv_alquileres_vehiculos_form" model="ir.ui.view">
+        <field name="name">javv.alquileres_vehiculos.form</field>
+        <field name="model">javv.alquileres_vehiculos</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="vehiculo_id"/>
+                        <field name="cliente_id"/>
+                        <field name="usuario_id"/>
+                    </group>
+                    <group>
+                        <field name="fecha_inicio"/>
+                        <field name="fecha_fin"/>
+                        <field name="duracion"/>
+                        <field name="precio_final"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -7,4 +7,18 @@
     <menuitem id="javv_menu_vehiculos" name="Vehículos"
               parent="javv_menu_root" sequence="20"
               action="action_javv_vehiculos"/>
+
+    <!-- Submenú para Tipos de Vehículos -->
+    <menuitem id="javv_menu_tipos_vehiculos" name="Tipos de Vehículos"
+              parent="javv_menu_root" sequence="30"
+              action="action_javv_tipos_vehiculos"/>
+
+    <!-- Submenú para Características Especiales -->
+    <menuitem id="javv_menu_caracteristicas" name="Características Especiales"
+              parent="javv_menu_root" sequence="40"
+              action="action_javv_caracteristicas"/>
+
+    <menuitem id="javv_menu_alquileres" name="Alquileres de Vehículos"
+          parent="javv_menu_root" sequence="25"
+          action="action_javv_alquileres"/>
 </odoo>
