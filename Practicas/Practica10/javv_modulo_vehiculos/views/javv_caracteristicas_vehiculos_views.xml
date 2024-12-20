@@ -32,4 +32,23 @@
             </form>
         </field>
     </record>
+
+    <!-- Vista de búsqueda para Características de Vehículos -->
+    <record id="view_javv_caracteristicas_search" model="ir.ui.view">
+        <field name="name">javv.caracteristicas_vehiculos.search</field>
+        <field name="model">javv.caracteristicas_vehiculos</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Actualizar la acción de Características -->
+    <record id="action_javv_caracteristicas" model="ir.actions.act_window">
+        <field name="name">Características Especiales</field>
+        <field name="res_model">javv.caracteristicas_vehiculos</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_javv_caracteristicas_search"/>
+    </record>
 </odoo>

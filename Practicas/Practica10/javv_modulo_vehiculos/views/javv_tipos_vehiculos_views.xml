@@ -36,4 +36,25 @@
             </form>
         </field>
     </record>
+
+    <!-- Vista de búsqueda para Tipos de Vehículos -->
+    <record id="view_javv_tipos_vehiculos_search" model="ir.ui.view">
+        <field name="name">javv.tipos_vehiculos.search</field>
+        <field name="model">javv.tipos_vehiculos</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="clasificacion_energetica"/>
+                <field name="enganche_carro"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Actualizar la acción de Tipos de Vehículos -->
+    <record id="action_javv_tipos_vehiculos" model="ir.actions.act_window">
+        <field name="name">Tipos de Vehículos</field>
+        <field name="res_model">javv.tipos_vehiculos</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_javv_tipos_vehiculos_search"/>
+    </record>
 </odoo>

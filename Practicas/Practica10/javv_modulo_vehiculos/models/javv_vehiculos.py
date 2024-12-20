@@ -28,3 +28,7 @@ class javv_vehiculos(models.Model):
         ('alquilado', 'Alquilado'),
         ('en_reparacion', 'En Reparación')
     ], string="Estado", default='disponible', readonly=True)
+
+    _sql_constraints = [
+        ('unique_matricula', 'unique(matricula)', 'La matrícula debe ser única.')
+    ]

@@ -48,4 +48,27 @@
             </form>
         </field>
     </record>
+
+     <!-- Vista de búsqueda para Alquileres de Vehículos -->
+    <record id="view_javv_alquileres_search" model="ir.ui.view">
+        <field name="name">javv.alquileres_vehiculos.search</field>
+        <field name="model">javv.alquileres_vehiculos</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="vehiculo_id"/>
+                <field name="cliente_id"/>
+                <field name="usuario_id"/>
+                <field name="state"/>
+                <field name="fecha_inicio"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Actualizar la acción de Alquileres -->
+    <record id="action_javv_alquileres" model="ir.actions.act_window">
+        <field name="name">Alquileres de Vehículos</field>
+        <field name="res_model">javv.alquileres_vehiculos</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_javv_alquileres_search"/>
+    </record>
 </odoo>

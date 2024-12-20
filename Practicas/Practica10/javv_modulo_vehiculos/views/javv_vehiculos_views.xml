@@ -47,4 +47,17 @@
             </form>
         </field>
     </record>
+        <!-- Vista de búsqueda para Vehículos -->
+    <record id="view_javv_vehiculos_search" model="ir.ui.view">
+        <field name="name">javv.vehiculos.search</field>
+        <field name="model">javv.vehiculos</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="matricula"/>
+                <field name="combustible"/>
+            </search>
+        </field>
+    </record>
 </odoo>
