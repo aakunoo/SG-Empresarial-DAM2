@@ -10,7 +10,8 @@
         <field name="name">javv.tipos_inmuebles.tree</field>
         <field name="model">javv.tipos_inmuebles</field>
         <field name="arch" type="xml">
-            <tree string="Listado">
+            <tree string="Listado" default_order="secuencia">
+                <field name="secuencia" widget="handle"/>
                 <field name="name"/>
             </tree>
         </field>
@@ -22,11 +23,24 @@
         <field name="arch" type="xml">
             <form string="Registro">
                 <sheet>
+                    <div align="right">
+                    <!-- Botón de ofertas para llamar a ofertas_inmuebles_action -->
+                    <button type="action" name="%(javv_ofertas_inmuebles_action)d" string="Ofertas" icon="fa-money" style="font-size:15px;">
+                        (<field name="contador_ofertas"/>)
+                    </button>
+                </div>
                     <div class="oe_title">
                         <h1>
                             <field name="name"/>
                         </h1>
                     </div>
+                    <field name="inmuebles_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="precio_esperado"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
                 </sheet>
             </form>
         </field>

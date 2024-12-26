@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Subplantilla: Detalles de la Propiedad -->
+    <template id="javv_propiedad_detalles">
+        <div>
+            <h2><span t-field="propiedad.name"/></h2>
+            <div>
+                <strong>Vendedor:</strong> <span t-field="propiedad.agente_id"/>
+            </div>
+            <div>
+                <strong>Precio Esperado:</strong> <span t-field="propiedad.precio_esperado"/>
+            </div>
+            <div>
+                <strong>Estado de la venta:</strong> <span t-field="propiedad.state"/>
+            </div>
+        </div>
+    </template>
+
+    <!-- Subplantilla: Tabla de Ofertas -->
+    <template id="javv_tabla_ofertas">
+        <t t-if="ofertas">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Precio</th>
+                        <th>Cliente</th>
+                        <th>Validez (días)</th>
+                        <th>Fecha Tope</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="ofertas" t-as="oferta">
+                        <tr>
+                            <td><span t-field="oferta.precio"/></td>
+                            <td><span t-field="oferta.comprador_id"/></td>
+                            <td><span t-field="oferta.validez"/></td>
+                            <td><span t-field="oferta.fecha_tope"/></td>
+                            <td><span t-field="oferta.estado"/></td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </t>
+        <t t-else="">
+            <div>
+                <strong>No se muestra la tabla de ofertas porque esta propiedad todavía no tiene ninguna asignada.</strong>
+            </div>
+        </t>
+    </template>
+
+    <!-- Plantilla Principal -->
+    <template id="javv_ofertas_propiedades_report_template">
+        <t t-foreach="docs" t-as="propiedad">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <!-- Llamada a la subplantilla de detalles -->
+                        <t t-call="javv_propiedad_detalles"/>
+                        <t t-set="ofertas" t-value="propiedad.mapped('ofertas_ids')"/>
+                        <!-- Llamada a la subplantilla de tabla de ofertas -->
+                        <t t-call="javv_tabla_ofertas"/>
+                        <div class="footer">
+                            <small>Informe sobre las ofertas de una propiedad inmueble.</small>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

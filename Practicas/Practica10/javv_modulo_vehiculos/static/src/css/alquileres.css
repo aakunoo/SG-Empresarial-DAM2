@@ -1,0 +1,78 @@
+.o_notebook_page {
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.o_group_wrapper {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.o_field_large {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.o_page_operacion .o_group_wrapper, .o_page_fechas .o_group_wrapper {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Alinear el campo "Vehículo" */
+.o_vehiculo_container {
+    margin-bottom: 10px;
+}
+
+.o_vehiculo_field {
+    display: flex;
+    align-items: center;
+}
+
+/* Separar los botones del wrapper */
+.o_footer_buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px; /* Espaciado entre botones */
+}
+
+.vehiculo-nombre {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 5px; /* Espaciado horizontal */
+}
+
+.vehiculo-codigo {
+    font-size: 18px;
+    color: gray;
+    margin-left: 5px; /* Asegúrate de que haya espacio entre los dos */
+}
+
+.o_custom_button_spacing {
+    margin-left: 10px !important;
+}
+/* Personalizar el texto para registros con `decoration-warning` */
+.o_list_view .o_data_row.decoration-warning td {
+    color: #905b3d !important; /* Marrón oscuro */
+    font-weight: bold; /* Opcional: texto en negrita */
+}
+/* Estado: Terminado (Verde y Negrita) */
+.o_list_view .o_data_row.decoration-success td {
+    color: green !important;
+    font-weight: normal !important;
+}
+
+/* Estado: Facturado (Púrpura y Cursiva) */
+.o_list_view .o_data_row.decoration-primary td {
+    color: purple !important;
+    font-style: italic !important;
+}
+/* Estado: Terminado (Verde y Negrita) */
+.o_list_view .o_data_row.decoration-success td:nth-child(n):has(> [data-value="terminado"]) {
+    font-weight: bold !important;
+}

@@ -5,6 +5,7 @@ from datetime import timedelta, date
 class javv_ofertas_inmuebles(models.Model):
     _name = "javv.ofertas_inmuebles"
     _description = "Modelo (tabla) para las ofertas de compra de propiedades inmobiliarias"
+    _order = "precio desc"
 
     precio = fields.Float(string="Precio", required=True)
     estado = fields.Selection(
@@ -18,7 +19,11 @@ class javv_ofertas_inmuebles(models.Model):
 
     validez = fields.Integer(default=7, string="Validez (días)")
     fecha_tope = fields.Date(compute="_calcular_fecha_tope", inverse="_inverso_fecha_tope", string="Fecha Tope")
-
+    tipo_propiedad_id = fields.Many2one(
+        related="inmueble_id.tipos_id",
+        store=True,
+        string="Tipo de Propiedad"
+    )
 
     @api.depends("validez")
     def _calcular_fecha_tope(self):
@@ -47,3 +52,8 @@ class javv_ofertas_inmuebles(models.Model):
             if record.estado == 'rechazada':
                 raise UserError("La oferta ya ha sido rechazada.")
             record.estado = 'rechazada'
+
+    _sql_constraints = [
+        ('check_precio', 'CHECK(precio > 0)',
+         'El valor del PRECIO DE LA OFERTA debe ser estrictamente positivo.')
+    ]

@@ -1,0 +1,11 @@
+ <!--<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+     Plantilla que hereda de la plantilla de ofertas de propiedades
+    <template id="inherited_ofertas_propiedades_report_template" inherit_id="javv.ofertas.propiedades.report">
+        <xpath expr="//div[@class='page']" position="before">
+            <t t-if="propiedad.state == 'vendido'">
+                <h3>¡Propiedad Vendida! Su factura ya está disponible.</h3>
+            </t>
+        </xpath>
+    </template>
+</odoo>-->

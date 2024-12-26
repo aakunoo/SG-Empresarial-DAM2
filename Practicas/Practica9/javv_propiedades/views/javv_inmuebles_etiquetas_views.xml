@@ -10,8 +10,9 @@
         <field name="name">javv.etiquetas_inmuebles.tree</field>
         <field name="model">javv.etiquetas_inmuebles</field>
         <field name="arch" type="xml">
-            <tree string="Listado">
+            <tree string="Listado" editable="top">
                 <field name="name"/>
+                <field name="color"/>
             </tree>
         </field>
     </record>
@@ -24,6 +25,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="color"/>
                     </group>
                 </sheet>
             </form>

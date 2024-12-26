@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Acción para las Ofertas -->
+    <record id="javv_ofertas_inmuebles_action" model="ir.actions.act_window">
+        <field name="name">Listado de Ofertas</field>
+        <field name="res_model">javv.ofertas_inmuebles</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('tipo_propiedad_id', '=', active_id)]</field>
+    </record>
+
+    <!-- Vista de Árbol para las Ofertas -->
     <record id="javv_ofertas_inmuebles_view_tree" model="ir.ui.view">
         <field name="name">javv.ofertas.inmuebles.tree</field>
         <field name="model">javv.ofertas_inmuebles</field>
         <field name="arch" type="xml">
-            <tree string="Listado">
+            <tree string="Listado" editable="bottom"
+                  decoration-success="estado=='aceptada'"
+                  decoration-danger="estado=='rechazada'">
                 <field name="precio"/>
                 <field name="comprador_id"/>
                 <field name="validez"/>
                 <field name="fecha_tope"/>
-                <button name="action_aceptar_oferta" icon="fa-check" type="object"/>
-                <button name="action_rechazar_oferta" icon="fa-times" type="object"/>
+                <field name="tipo_propiedad_id" invisible="1"/> <!-- Campo relacionado oculto -->
+                <button name="action_aceptar_oferta" icon="fa-check" type="object"
+                        attrs="{'invisible': [('estado', 'in', ('aceptada', 'rechazada'))]}"/>
+                <button name="action_rechazar_oferta" icon="fa-times" type="object"
+                        attrs="{'invisible': [('estado', 'in', ('aceptada', 'rechazada'))]}"/>
                 <field name="estado"/>
             </tree>
         </field>
     </record>
 
+    <!-- Vista de Formulario para las Ofertas -->
     <record id="javv_ofertas_inmuebles_view_form" model="ir.ui.view">
         <field name="name">javv.ofertas.inmuebles.form</field>
         <field name="model">javv.ofertas_inmuebles</field>
@@ -28,6 +43,8 @@
                         <field name="validez"/>
                         <field name="fecha_tope"/>
                         <field name="estado"/>
+                        <!-- Campo relacionado visible sólo como referencia -->
+                        <field name="tipo_propiedad_id" readonly="1"/>
                     </group>
                 </sheet>
             </form>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="neumatico_michelin" model="javv.neumaticos">
+        <field name="name">Michelin</field>
+    </record>
+    <record id="neumatico_bridgestone" model="javv.neumaticos">
+        <field name="name">Bridgestone</field>
+    </record>
+    <record id="neumatico_goodyear" model="javv.neumaticos">
+        <field name="name">Goodyear</field>
+    </record>
+    <record id="neumatico_pirelli" model="javv.neumaticos">
+        <field name="name">Pirelli</field>
+    </record>
+    <record id="neumatico_continental" model="javv.neumaticos">
+        <field name="name">Continental</field>
+    </record>
+    <record id="neumatico_hankook" model="javv.neumaticos">
+        <field name="name">Hankook</field>
+    </record>
+    <record id="neumatico_bfgoodrich" model="javv.neumaticos">
+        <field name="name">BF Goodrich</field>
+    </record>
+    <record id="neumatico_dunlop" model="javv.neumaticos">
+        <field name="name">Dunlop</field>
+    </record>
+    <record id="neumatico_yokohama" model="javv.neumaticos">
+        <field name="name">Yokohama</field>
+    </record>
+    <record id="neumatico_kumho" model="javv.neumaticos">
+        <field name="name">Kumho</field>
+    </record>
+</odoo>

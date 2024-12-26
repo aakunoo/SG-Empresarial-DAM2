@@ -1,10 +1,12 @@
 from odoo import fields, models, api
 from datetime import timedelta
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools.float_utils import float_compare, float_is_zero
 
 class javv_inmuebles(models.Model):
     _name = "javv.propiedades_inmuebles"  # Se creará una tabla llamada javv_inmuebles
     _description = "Propiedades Inmuebles"
+    _order = "id desc"
 
     name = fields.Char(string="Nombre", required=True)
     descripcion = fields.Text(string="Descripción")
@@ -47,6 +49,11 @@ class javv_inmuebles(models.Model):
         string="Área total (m²)"
     )
 
+    javv_agente_id = fields.Many2one(
+        "res.users",
+        string="Agente Responsable"
+    )
+
     @api.depends("salon", "area_jardin")
     def _calcular_area_total(self):
         for record in self:
@@ -80,12 +87,29 @@ class javv_inmuebles(models.Model):
     # MÉTODOS PARA BOTONES
     def action_vender_propiedad(self):
         for record in self:
-            if record.state == 'cancelado':
-                raise UserError("Las propiedades canceladas no pueden ser vendidas.")
+            if record.state in ['vendido', 'cancelado']:
+                raise UserError("No se puede vender una propiedad que ya está vendida o cancelada.")
             record.state = 'vendido'
 
     def action_cancelar_propiedad(self):
         for record in self:
-            if record.state == 'vendido':
-                raise UserError("Las propiedades vendidas no pueden ser canceladas.")
+            if record.state in ['vendido', 'cancelado']:
+                raise UserError("No se puede cancelar una propiedad que ya está vendida o cancelada.")
             record.state = 'cancelado'
+
+    _sql_constraints = [
+        ('check_precio_esperado', 'CHECK(precio_esperado > 0)',
+         'El valor del PRECIO ESPERADO debe ser estrictamente positivo.')
+    ]
+
+    @api.constrains('precio_venta', 'precio_esperado')
+    def _check_precio_venta(self):
+        for record in self:
+            if float_is_zero(record.precio_venta, 2):
+                # Si precio_venta es 0, no comprobamos la restricción
+                continue
+            # Comprobar si precio_venta es inferior al 90% de precio_esperado
+            if float_compare(record.precio_venta, (record.precio_esperado * 0.9), 2) == -1:
+                raise ValidationError(
+                    "EL PRECIO DE VENTA debe ser, al menos, del 90% del PRECIO ESPERADO. "
+                    "Puede reducir el PRECIO ESPERADO para aceptar esta oferta.")

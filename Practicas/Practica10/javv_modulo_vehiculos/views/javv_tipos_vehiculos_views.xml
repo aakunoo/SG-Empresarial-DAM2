@@ -32,7 +32,24 @@
                         <field name="clasificacion_energetica"/>
                         <field name="enganche_carro"/>
                     </group>
+                    <notebook>
+                        <page string="Vehículos Relacionados">
+                            <field name="vehiculos_ids" readonly="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="codigo"/>
+                                    <field name="matricula"/>
+                                    <field name="precio_diario"/>
+                                    <field name="numero_alquileres"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <footer>
+                         <button name="action_estadisticas" string=" Alquileres Relacionados" type="object" icon="fa-folder"/>
+                    </footer>
                 </sheet>
+
             </form>
         </field>
     </record>

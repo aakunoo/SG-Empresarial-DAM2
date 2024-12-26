@@ -12,8 +12,9 @@
         <field name="name">javv.caracteristicas_vehiculos.tree</field>
         <field name="model">javv.caracteristicas_vehiculos</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree editable="top">
                 <field name="name"/>
+                <field name="sequence" widget="handle"/>
             </tree>
         </field>
     </record>

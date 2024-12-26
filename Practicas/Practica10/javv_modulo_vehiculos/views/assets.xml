@@ -1,0 +1,21 @@
+<odoo>
+    <template id="assets_backend" name="Assets Backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/tu_modulo/static/src/css/alquileres.css"/>
+        </xpath>
+    </template>
+
+
+    <template id="assets_backend" name="Custom Styles Backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/tu_modulo/static/src/css/alquileres.css"/>
+        </xpath>
+    </template>
+
+    <template id="assets_backend" inherit_id="web.assets_backend" name="Customization of Backend Assets">
+    <xpath expr="." position="inside">
+        <link rel="stylesheet" type="text/css" href="/javv_modulo_vehiculos/static/src/css/alquileres.css"/>
+    </xpath>
+</template>
+
+</odoo>

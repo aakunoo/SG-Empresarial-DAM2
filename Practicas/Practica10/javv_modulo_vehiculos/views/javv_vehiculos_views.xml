@@ -5,7 +5,6 @@
         <field name="name">Vehículos</field>
         <field name="res_model">javv.vehiculos</field>
         <field name="view_mode">tree,form</field>
-
     </record>
 
     <!-- Vista de lista (Tree) de Vehículos -->
@@ -13,15 +12,20 @@
         <field name="name">javv.vehiculos.tree</field>
         <field name="model">javv.vehiculos</field>
         <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
+            <tree decoration-success="decoration_state in ('success', 'success_bold')"
+                    decoration-danger="decoration_state == 'danger_italic'">
+                 <field name="name"/>
                 <field name="codigo"/>
                 <field name="matricula"/>
                 <field name="tipo_vehiculo_id"/>
                 <field name="num_plazas"/>
                 <field name="combustible"/>
+                <field name="fecha_fabricacion"/>
+                <field name="fecha_itv"/>
                 <field name="precio_diario"/>
-                <field name="state"/>
+                <field name="numero_alquileres"/>
+                <field name="state" readonly="1"/>
+                <field name="decoration_state" invisible="1"/>
             </tree>
         </field>
     </record>
@@ -32,31 +36,95 @@
         <field name="model">javv.vehiculos</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="disponible,alquilado,en_reparacion"/>
+                </header>
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="codigo"/>
-                        <field name="matricula"/>
-                        <field name="tipo_vehiculo_id"/>
-                        <field name="num_plazas"/>
-                        <field name="combustible"/>
-                        <field name="precio_diario"/>
-                        <field name="state"/>
+                        <h1>
+                            <field name="name" class="vehiculo-nombre"/>
+                            <field name="codigo" class="vehiculo-codigo" readonly="1"/>
+                        </h1>
                     </group>
+
+                    <!-- Características especiales en forma de etiquetas -->
+                    <group>
+                        <field name="caracteristicas_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    </group>
+
+                    <!-- Campos en dos columnas -->
+                    <group colspan="2">
+                        <group>
+                            <field name="matricula"/>
+                            <field name="tipo_vehiculo_id"/>
+                            <field name="numero_alquileres" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="fecha_fabricacion" optional="hide"/>
+                            <field name="fecha_itv" optional="hide"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Características">
+                            <group>
+                                <field name="potencia"/>
+                                <field name="num_plazas" optional="show"/>
+                                <field name="combustible"/>
+                                <field name="neumaticos_id" widget="many2one" options="{'no_create_edit': False}" optional="show"/>
+                                <field name="maletero" widget="boolean_toggle"/>
+                                <field name="capacidad_maletero" attrs="{'required': [('maletero', '=', True)]}"/>
+                            </group>
+                        </page>
+                        <page string="Precios">
+                            <group>
+                                <field name="precio_diario"/>
+                                <field name="precio_semanal" readonly="1"/>
+                            </group>
+                        </page>
+                        <page string="Alquileres">
+                            <field name="alquileres_ids" readonly="1">
+                                <tree>
+                                    <field name="cliente_id"/>
+                                    <field name="fecha_inicio"/>
+                                    <field name="fecha_fin"/>
+                                    <field name="duracion"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button name="action_comenzar_reparacion" string="Comenzar Reparación" type="object"
+                                class="btn-primary" attrs="{'invisible': [('state', '!=', 'disponible')]}"/>
+                        <button name="action_terminar_reparacion" string="Terminar Reparación" type="object"
+                                class="btn-success" attrs="{'invisible': [('state', '!=', 'en_reparacion')]}"/>
+                    </footer>
                 </sheet>
             </form>
         </field>
     </record>
-        <!-- Vista de búsqueda para Vehículos -->
+
+    <!-- Vista de búsqueda para Vehículos -->
     <record id="view_javv_vehiculos_search" model="ir.ui.view">
         <field name="name">javv.vehiculos.search</field>
         <field name="model">javv.vehiculos</field>
         <field name="arch" type="xml">
             <search>
+                <!-- Campos para búsqueda -->
                 <field name="name"/>
                 <field name="codigo"/>
                 <field name="matricula"/>
+                <field name="fecha_fabricacion"/>
                 <field name="combustible"/>
+
+                <!-- Filtros -->
+                <filter name="filter_berlina" string="Sólo Berlina" domain="[('tipo_vehiculo_id.name', '=', 'Berlina')]"/>
+                <filter name="filter_fecha_fabricacion" string="Fecha Fabricación" domain="[('fecha_fabricacion', '>=', (context_today()))]"/>
+
+
+                <!-- Agrupaciones -->
+                <group expand="1" string="Agrupar por">
+                    <filter name="group_num_plazas" string="Número de Plazas" context="{'group_by': 'num_plazas'}"/>
+                </group>
             </search>
         </field>
     </record>

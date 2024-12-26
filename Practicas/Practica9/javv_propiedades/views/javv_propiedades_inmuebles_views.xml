@@ -3,21 +3,28 @@
     <record id="javv_propiedades_inmuebles_action" model="ir.actions.act_window">
         <field name="name">Listado de Propiedades</field>
         <field name="res_model">javv.propiedades_inmuebles</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{'search_default_disponibles': True, 'create': True}</field>
+
     </record>
     <record id="javv_propiedades_inmuebles_view_tree" model="ir.ui.view">
         <field name="name">Lista de Propiedades</field>
         <field name="model">javv.propiedades_inmuebles</field>
         <field name="arch" type="xml">
-            <tree string="Listado">
+            <tree string="Listado"
+                  decoration-success="state=='oferta_recibida' or state=='oferta_aceptada'"
+                  decoration-bf="state=='oferta_aceptada'"
+                  decoration-muted="state=='vendido'"
+                  decoration-danger="state=='cancelado'">
                 <field name="name"/>
                 <field name="tipos_id"/>
                 <field name="codigo_postal"/>
+                <field name="state" invisible="1"/>
                 <field name="dormitorios"/>
                 <field name="salon" string="Salón (m²)"/>
                 <field name="precio_esperado"/>
-                <field name="precio_venta"/>
-                <field name="fecha_disponibilidad"/>
+                <field name="precio_venta" optional="show"/>
+                <field name="fecha_disponibilidad" optional="hide"/>
             </tree>
         </field>
     </record>
@@ -27,8 +34,9 @@
         <field name="arch" type="xml">
             <form string="Registro">
                 <header>
-                <button name="action_vender_propiedad" type="object" string="Vender"/>
-                <button name="action_cancelar_propiedad" type="object" string="Cancelar"/>
+                    <field name="state" widget="statusbar" options="{'clickable': True}"/>
+                    <button name="action_vender_propiedad" type="object" string="Vender" states="nuevo,oferta_recibida,oferta_aceptada"/>
+                    <button name="action_cancelar_propiedad" type="object" string="Cancelar" states="nuevo,oferta_recibida,oferta_aceptada"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
@@ -36,16 +44,14 @@
                             <field name="name"/>
                         </h1>
                     </div>
-                    <field name="etiquetas_ids" widget="many2many_tags"/>
+                    <field name="etiquetas_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                     <group>
-                        <field name="state"/>
-                        <field name="tipos_id"/>
+                        <field name="tipos_id" options="{'no_create': True, 'no_create_edit': True}"/>
                         <field name="codigo_postal"/>
                         <field name="fecha_disponibilidad"/>
                     </group>
                     <group>
                         <field name="precio_esperado"/>
-                        <!-- Añadimos el nuevo campo mejor_oferta -->
                         <field name="mejor_oferta"/>
                         <field name="precio_venta"/>
                     </group>
@@ -58,14 +64,14 @@
                                 <field name="fachadas"/>
                                 <field name="garage"/>
                                 <field name="jardin"/>
-                                <field name="area_jardin"/>
-                                <field name="orientacion_jardin"/>
-                                <!-- Añadimos el nuevo campo area_total -->
+                                <field name="area_jardin" attrs="{'invisible': [('jardin', '=', False)]}"/>
+                                <field name="orientacion_jardin" attrs="{'invisible': [('jardin', '=', False)]}"/>
+                                <field name="ofertas_ids" attrs="{'readonly': [('state', 'in', ('oferta_aceptada', 'vendido', 'cancelado'))]}"/>
                                 <field name="area_total"/>
                             </group>
                         </page>
                         <page string="Ofertas">
-                            <field name="ofertas_ids"/>
+                            <field name="ofertas_ids" attrs="{'readonly': [('state', 'in', ['oferta_aceptada', 'vendido', 'cancelado'])]}"/>
                         </page>
                         <page string="Otra Información">
                             <group>
@@ -88,7 +94,7 @@
                 <field name="codigo_postal"/>
                 <field name="precio_esperado"/>
                 <field name="dormitorios"/>
-                <field name="salon" string="(m²) del salón"/>
+                <field name="salon" string="(m²) del salón" filter_domain="[('salon', '>=', self)]"/>
                 <field name="fachadas"/>
                 <separator/>
                 <filter string="Disponibles" name="disponibles" domain="[('state', '=', 'nuevo'), ('state', '=', 'oferta_recibida')]"/>
@@ -98,4 +104,40 @@
             </search>
         </field>
     </record>
+
+    <record id="javv_propiedades_inmuebles_view_kanban" model="ir.ui.view">
+        <field name="name">javv.propiedades.inmuebles.kanban</field>
+        <field name="model">javv.propiedades_inmuebles</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="tipos_id" records_draggable="false" class="o_kanban_view" create="true">
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div>
+                                <strong><field name="name"/></strong>
+                            </div>
+                            <div>
+                                Precio esperado: <field name="precio_esperado"/>
+                            </div>
+                            <t t-if="record.state.raw_value == 'oferta_recibida'">
+                                <div>
+                                    Mejor oferta: <field name="mejor_oferta"/>
+                                </div>
+                            </t>
+                            <t t-if="record.state.raw_value == 'oferta_aceptada'">
+                                <div>
+                                    Precio de venta: <field name="precio_venta"/>
+                                </div>
+                            </t>
+                            <div>
+                                <field name="etiquetas_ids"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
 </odoo>
