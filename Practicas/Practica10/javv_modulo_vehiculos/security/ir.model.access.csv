@@ -3,3 +3,4 @@ access_javv_vehiculos,access_javv_vehiculos,model_javv_vehiculos,base.group_user
 access_javv_tipos_vehiculos,access_javv_tipos_vehiculos,model_javv_tipos_vehiculos,base.group_user,1,1,1,1
 access_javv_caracteristicas_vehiculos,access_javv_caracteristicas_vehiculos,model_javv_caracteristicas_vehiculos,base.group_user,1,1,1,
 access_javv_alquileres_vehiculos,access_javv_alquileres_vehiculos,model_javv_alquileres_vehiculos,base.group_user,1,1,1,1
+access_javv_neumaticos,access_javv_neumaticos,model_javv_neumaticos,base.group_user,1,1,1,1
