@@ -7,9 +7,9 @@
     'depends': ['base', 'account'],
     'data': [
         'security/ir.model.access.csv',
-        'views/javv_caracteristicas_vehiculos_views.xml',  # Primero características
-        'views/javv_tipos_vehiculos_views.xml',  # Luego tipos
-        'views/javv_vehiculos_views.xml',  # Ahora vehículos
+        'views/javv_caracteristicas_vehiculos_views.xml',
+        'views/javv_tipos_vehiculos_views.xml',
+        'views/javv_vehiculos_views.xml',
         'views/javv_alquileres_vehiculos_views.xml',
         'views/javv_menus.xml',
         'views/javv_herencia_views.xml',
