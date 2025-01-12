@@ -4,7 +4,7 @@
     <record id="action_javv_tipos_vehiculos" model="ir.actions.act_window">
         <field name="name">Tipos de Vehículos</field>
         <field name="res_model">javv.tipos_vehiculos</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
     </record>
 
     <!-- Vista de lista (Tree) de Tipos de Vehículos -->
@@ -67,11 +67,40 @@
         </field>
     </record>
 
+        <!-- Vista Kanban -->
+<record id="view_javv_tipos_vehiculos_kanban" model="ir.ui.view">
+    <field name="name">javv.tipos.vehiculos.kanban</field>
+    <field name="model">javv.tipos_vehiculos</field>
+    <field name="arch" type="xml">
+        <kanban create="true" edit="true" draggable="true">
+            <field name="name"/>
+            <field name="clasificacion_energetica"/>
+            <field name="enganche_carro"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click o_kanban_card">
+                        <div class="o_kanban_record_title">
+                            <strong><field name="name"/></strong>
+                        </div>
+                        <!-- Mostrar clasificación en una línea separada -->
+                        <t t-if="record.clasificacion_energetica.raw_value == '0' or record.clasificacion_energetica.raw_value == 'Eco' or record.clasificacion_energetica.raw_value == 'eco'">
+                            <div>Clasificación: <field name="clasificacion_energetica"/></div>
+                        </t>
+                        <!-- Mostrar enganche en otra línea -->
+                        <t t-if="record.enganche_carro.raw_value">
+                            <div>Enganche para carro disponible</div>
+                        </t>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
     <!-- Actualizar la acción de Tipos de Vehículos -->
     <record id="action_javv_tipos_vehiculos" model="ir.actions.act_window">
         <field name="name">Tipos de Vehículos</field>
         <field name="res_model">javv.tipos_vehiculos</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
         <field name="search_view_id" ref="view_javv_tipos_vehiculos_search"/>
     </record>
 </odoo>

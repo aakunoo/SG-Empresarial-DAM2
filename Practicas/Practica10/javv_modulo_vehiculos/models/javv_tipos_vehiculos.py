@@ -58,3 +58,18 @@ class javv_tipos_vehiculos(models.Model):
             'domain': [('vehiculo_id.tipo_vehiculo_id', '=', self.id)],
             'context': {'default_tipo_vehiculo_id': self.id},
         }
+
+    kanban_clasificacion_display = fields.Char(
+        string="Clasificación para Kanban",
+        compute="_compute_kanban_clasificacion_display"
+    )
+
+    @api.depends('clasificacion_energetica', 'enganche_carro')
+    def _compute_kanban_clasificacion_display(self):
+        for record in self:
+            display = []
+            if record.clasificacion_energetica in ['0', 'eco']:
+                display.append(f"Clasificación: {record.clasificacion_energetica}")
+            if record.enganche_carro:
+                display.append("Enganche para carro disponible")
+            record.kanban_clasificacion_display = "\n".join(display)
