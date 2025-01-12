@@ -4,26 +4,32 @@
         <t t-foreach="docs" t-as="usuario">
             <t t-call="web.html_container">
                 <t t-call="web.external_layout">
+
                     <div class="page">
                         <h2>
-                            <strong>Vendedor: </strong><span t-field="usuario.name"/>
+                            <strong>Vendedor: </strong>
+                            <span t-field="usuario.name"/>
                         </h2>
-                        <t t-set="propiedades" t-value="usuario.mapped('propiedades_ids')"/>
+                        <t t-set="propiedades" t-value="usuario.mapped('javv_propiedades_ids')"/>
+
                         <t t-if="propiedades">
                             <t t-foreach="propiedades" t-as="propiedad">
                                 <h2>
                                     <span t-field="propiedad.name"/>
                                 </h2>
                                 <div>
-                                    <strong>Precio Esperado: </strong><span t-field="propiedad.precio_esperado"/>
+                                    <strong>Precio Esperado: </strong>
+                                    <span t-field="propiedad.precio_esperado"/>
                                 </div>
                                 <div>
-                                    <strong>Estado de la venta: </strong><span t-field="propiedad.state"/>
+                                    <strong>Estado de la venta: </strong>
+                                    <span t-field="propiedad.state"/>
                                 </div>
-                                <!-- Llamada a la subplantilla de la tabla -->
-                                <t t-call="javv_propiedades.ofertas_propiedades_report_template">
+                                <t t-call="javv_propiedades.javv_ofertas_propiedades_report_template_tabla">
                                     <t t-set="ofertas" t-value="propiedad.mapped('ofertas_ids')"/>
                                 </t>
+
+                                <br/>
                             </t>
                         </t>
                         <t t-else="">
@@ -33,10 +39,12 @@
                             </div>
                             <br/><br/>
                         </t>
-                        <div class="footer">
-                            <small>Informe sobre las ofertas de una propiedad inmueble.</small>
-                        </div>
                     </div>
+
+                    <div class="footer">
+                        <small>Informe sobre las ofertas de una propiedad inmueble.</small>
+                    </div>
+
                 </t>
             </t>
         </t>

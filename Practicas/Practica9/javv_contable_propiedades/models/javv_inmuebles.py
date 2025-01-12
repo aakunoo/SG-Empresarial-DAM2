@@ -2,7 +2,7 @@ from odoo import fields, models, Command
 from datetime import datetime
 
 class JavvInheritedInmuebles(models.Model):
-    _inherit = "javv.propiedades_inmuebles"  # Extiende la clase de propiedades inmobiliarias
+    _inherit = "javv.propiedades_inmuebles"
 
     def action_vender_propiedad(self):
         for record in self:
@@ -25,5 +25,4 @@ class JavvInheritedInmuebles(models.Model):
                     }),
                 ],
             })
-        # Llamar al método original de la clase padre
         return super().action_vender_propiedad()

@@ -4,9 +4,11 @@
         <field name="name">Ofertas del Usuario</field>
         <field name="model">res.users</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">javv_propiedades.ofertas_usuario_report_template</field>
-        <field name="report_file">javv_propiedades.ofertas_usuario_report_template</field>
-        <field name="print_report_name">'Informe de Ofertas del Usuario.pdf'</field>
+        <field name="report_name">javv_propiedades.javv_ofertas_usuario_report_template</field>
+        <field name="report_file">javv_propiedades.javv_ofertas_usuario_report_template</field>
+
+        <field name="paperformat_id" ref="base.paperformat_euro"/>
+        <field name="print_report_name">'Informe de Ofertas del Usuario'</field>
         <field name="binding_model_id" ref="base.model_res_users"/>
         <field name="binding_type">report</field>
     </record>

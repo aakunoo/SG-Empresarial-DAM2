@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Acción del Informe -->
+    <record id="javv_formato_papel_ofertas_propiedades_report" model="report.paperformat">
+        <field name="name">Formato Papel Ofertas Propiedades JAVV</field>
+        <field name="default" eval="False"/>
+        <field name="format">custom</field>
+        <field name="page_height">240</field>
+        <field name="page_width">150</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">25</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">20</field>
+        <field name="margin_right">20</field>
+        <field name="header_line" eval="True"/>
+        <field name="header_spacing">20</field>
+        <field name="dpi">100</field>
+    </record>
+
     <record id="javv_ofertas_propiedades_report" model="ir.actions.report">
         <field name="name">Ofertas de Propiedades</field>
         <field name="model">javv.propiedades_inmuebles</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_file">javv_ofertas_propiedades_report_template</field>
-        <field name="print_report_name">'Informe de Ofertas de Propiedades.pdf'</field>
-        <field name="report_name">javv.ofertas.propiedades.report</field>
+        <field name="report_name">javv_propiedades.ofertas_propiedades_report_template</field>
+        <field name="report_file">javv_propiedades.ofertas_propiedades_report_template</field>
+
+        <field name="paperformat_id" ref="javv_formato_papel_ofertas_propiedades_report"/>
+        <field name="print_report_name">'Informe de Ofertas de Propiedades'</field>
         <field name="binding_model_id" ref="model_javv_propiedades_inmuebles"/>
         <field name="binding_type">report</field>
     </record>

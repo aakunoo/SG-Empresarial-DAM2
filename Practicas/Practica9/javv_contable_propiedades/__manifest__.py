@@ -6,7 +6,7 @@
     'license': 'LGPL-3',
     'depends': ['base', 'javv_propiedades', 'account'],
     'data': [
-        #'reports/javv_inherited_propiedades_inmuebles_templates.xml',
+        'reports/javv_inherited_propiedades_inmuebles_templates.xml',
     ],
     'application': True,
 }

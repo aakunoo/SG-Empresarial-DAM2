@@ -41,11 +41,10 @@ class javv_inmuebles(models.Model):
         ('cancelado', 'Cancelado')
     ], string="Estado", required=True, copy=False, default="nuevo")
 
-    # Campo calculado para el área total
     area_total = fields.Integer(
         compute="_calcular_area_total",
         search="_search_area_total",
-        store=True,  # Para almacenar el valor en la base de datos
+        store=True,
         string="Área total (m²)"
     )
 
@@ -62,7 +61,6 @@ class javv_inmuebles(models.Model):
     def _search_area_total(self, operator, value):
         return [('area_total', operator, value)]
 
-    # Campo calculado para la mejor oferta
     mejor_oferta = fields.Float(compute="_calcular_mejor_oferta", string="Mejor Oferta", store=True)
 
     @api.depends("ofertas_ids.precio")
@@ -73,8 +71,6 @@ class javv_inmuebles(models.Model):
             else:
                 record.mejor_oferta = 0
 
-
-    # Metodo Onchange para el campo 'jardin'
     @api.onchange("jardin")
     def _onchange_jardin(self):
         if self.jardin:
@@ -84,7 +80,6 @@ class javv_inmuebles(models.Model):
             self.area_jardin = 0
             self.orientacion_jardin = ''
 
-    # MÉTODOS PARA BOTONES
     def action_vender_propiedad(self):
         for record in self:
             if record.state in ['vendido', 'cancelado']:
@@ -106,9 +101,7 @@ class javv_inmuebles(models.Model):
     def _check_precio_venta(self):
         for record in self:
             if float_is_zero(record.precio_venta, 2):
-                # Si precio_venta es 0, no comprobamos la restricción
                 continue
-            # Comprobar si precio_venta es inferior al 90% de precio_esperado
             if float_compare(record.precio_venta, (record.precio_esperado * 0.9), 2) == -1:
                 raise ValidationError(
                     "EL PRECIO DE VENTA debe ser, al menos, del 90% del PRECIO ESPERADO. "
