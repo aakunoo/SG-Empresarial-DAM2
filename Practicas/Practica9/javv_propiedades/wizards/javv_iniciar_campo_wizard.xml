@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_javv_iniciar_campo_wizard" model="ir.actions.act_window">
+        <field name="name">Asistente para iniciar campos vacíos</field>
+        <field name="res_model">javv.iniciar_campo_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="javv_ejemplo_wizard_submenu"
+              name="Iniciar Campos"
+              parent="javv_propiedades_first_level_menu1"
+              action="action_javv_iniciar_campo_wizard"/>
+
+    <record id="javv_iniciar_campo_wizard_form" model="ir.ui.view">
+        <field name="name">javv.iniciar.campo.wizard.form</field>
+        <field name="model">javv.iniciar_campo_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Iniciar campos vacíos">
+                <group>
+                    <field name="campo"/>
+                    <field name="valor"/>
+                </group>
+                <footer>
+                    <button name="iniciar_valor_campo"
+                            string="Iniciar valores"
+                            type="object"
+                            class="oe_highlight"/>
+                    <button string="Cancelar"
+                            special="cancel"
+                            class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_javv_precio_esperado_wizard" model="ir.actions.act_window">
+        <field name="name">Asistente para establecer el precio esperado</field>
+        <field name="res_model">javv.precio_esperado_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Vista formulario-->
+    <record id="javv_precio_esperado_wizard_form" model="ir.ui.view">
+        <field name="name">javv.precio_esperado.wizard.form</field>
+        <field name="model">javv.precio_esperado_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Establecer precio esperado">
+                <group>
+                    <field name="precio_base"/>
+                    <field name="buena_ubicacion"/>
+                    <field name="muy_nuevo"/>
+                    <field name="cocina_amueblada"/>
+                </group>
+                <footer>
+                    <button name="establecer_precio_esperado"
+                            string="Establecer"
+                            type="object"
+                            class="oe_highlight"/>
+                    <button string="Cancelar"
+                            special="cancel"
+                            class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -37,6 +37,9 @@
                     <field name="state" widget="statusbar" options="{'clickable': True}"/>
                     <button name="action_vender_propiedad" type="object" string="Vender" states="nuevo,oferta_recibida,oferta_aceptada"/>
                     <button name="action_cancelar_propiedad" type="object" string="Cancelar" states="nuevo,oferta_recibida,oferta_aceptada"/>
+                    <button name="action_ver_campos" type="object" string="Ejecutar"/>
+                    <button name="action_modificar_entorno" type="object" string="Ejecutar2"/>
+                    <button name="action_sql" type="object" string="Ejecutar SQL"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
@@ -52,6 +55,9 @@
                     </group>
                     <group>
                         <field name="precio_esperado"/>
+                        <button name="%(action_javv_precio_esperado_wizard)d"
+                        type="action"
+                        string="Establecer precio esperado"/>
                         <field name="mejor_oferta"/>
                         <field name="precio_venta"/>
                     </group>

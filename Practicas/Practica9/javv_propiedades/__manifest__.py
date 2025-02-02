@@ -5,6 +5,8 @@
     'author': 'Jeronimo',
     'depends': ['base'],
     'data': [
+        'wizards/javv_precio_esperado_wizard.xml',
+        'wizards/javv_iniciar_campo_wizard.xml',
         'views/javv_propiedades_inmuebles_views.xml',
         'views/javv_inmuebles_ofertas_views.xml',
         'views/javv_tipos_views.xml',
